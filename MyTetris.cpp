@@ -12,17 +12,20 @@ int main()
 	Player p1(name1,pos1),p2(name2,pos2); 
 	
 	//背景、游戏初始化 
-	BackGround BG;
-	Game G1; 
+	Game game; 
 	Block Bk1,Bk2;
 	
-	BG.Initial_screen();
+	game.Initial_screen();
+	
+	//生成第一个方块 
 	Bk1.generate(p1);
     Bk2.generate(p2);
-	G1.update_screen(p1,p2);
+	game.update_screen(p1,p2);
 	
-	
-	
-	
+	while (1)//主循环
+    {
+		game.playing(p1,p2,Bk1,Bk2);
+		if(game.over(p1,p2)) break; 
+    }
 	return 0;
 }
